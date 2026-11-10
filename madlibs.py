@@ -32,13 +32,16 @@ def words_list():
     ]
 
 
-words = []
-try:
-    with open("words.txt", "r") as f:
-        words = [line.strip() for line in f.readlines()]
-except FileNotFoundError:
-    pass  # If the file doesn't exist, we just use the default words_list
-return words
+def load_words():
+    """Load filler words from words.txt when it is available."""
+    try:
+        with open("words.txt", "r") as f:
+            return [line.strip() for line in f if line.strip()]
+    except FileNotFoundError:
+        return words_list()
+
+
+words = load_words()
 
 
 def generate_word_for_blanks():
