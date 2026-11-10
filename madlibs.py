@@ -32,6 +32,15 @@ def words_list():
     ]
 
 
+words = []
+try:
+    with open("words.txt", "r") as f:
+        words = [line.strip() for line in f.readlines()]
+except FileNotFoundError:
+    pass  # If the file doesn't exist, we just use the default words_list
+return
+
+
 def generate_word_for_blanks():
     """When there is no input from the user, the function generates a random filler word"""
     return random.choice(words_list())
