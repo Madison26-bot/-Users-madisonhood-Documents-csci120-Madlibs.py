@@ -38,7 +38,7 @@ try:
         words = [line.strip() for line in f.readlines()]
 except FileNotFoundError:
     pass  # If the file doesn't exist, we just use the default words_list
-return
+return words
 
 
 def generate_word_for_blanks():
